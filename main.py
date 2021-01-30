@@ -49,12 +49,12 @@ def parse(sentence):
         a, b = xyz
         taglist.append(b)
         wordlist.append(a)
-    if taglist[0] == 'NNP' and wordlist[1] == 'is':
+    if taglist[0] == 'NNP' and wordlist[1] == 'is' or wordlist[1] == 'was':
         question = 'Who ' + wordlist[1]+' '+wordlist[0]+' '+'?             '
-    if taglist[0] == 'NNP' and wordlist[1] == 'is' and taglist[2] == 'JJ':
+    if taglist[0] == 'NNP' and wordlist[1] == 'is' or wordlist[1] == 'was' and taglist[2] == 'JJ':
         question += 'What is quality of ' + wordlist[0]+' '+'?             '
-    if taglist[0] == 'NN' and wordlist[1] == 'is':
-        question += 'What' + taglist[1] + taglist[0]
+    if taglist[0] == 'NN' and wordlist[1] == 'is' or wordlist[1] == 'was':
+        question += 'What ' + wordlist[1] +' '+wordlist[0]
     if taglist[0] == 'WRB':
         question = ''
     return question
