@@ -52,7 +52,11 @@ def parse(sentence):
     if taglist[0] == 'NNP' and taglist[1] == 'VBZ':
         question = 'Who ' + wordlist[1]+' '+wordlist[0]+' '+'?             '
     if taglist[0] == 'NNP' and taglist[1] == 'VBZ' and taglist[2] == 'JJ':
-        question += 'What is quality of ' +wordlist[0]+' '+'?             '
+        question += 'What is quality of ' + wordlist[0]+' '+'?             '
+    if taglist[0] == 'NN' and taglist[1] == 'VBZ':
+        question += 'What' + taglist[1] + taglist[0]
+    if taglist[0] == 'WRB':
+        question = ''
     return question
 
 
@@ -64,5 +68,5 @@ def loaddata(parag):
     return questionlist
 
 
-parag=input("Enter a paragraph:\n")
+parag = input("Enter a paragraph:\n")
 print(loaddata(parag))
