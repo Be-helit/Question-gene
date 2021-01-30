@@ -1,5 +1,5 @@
 from textblob import TextBlob
-
+###########I am enclosing a list of tags for user reference#########
 '''
 CC coordinating conjunction
 CD cardinal digit
@@ -38,17 +38,20 @@ WP$ possessive wh-pronoun whose
 WRB wh-abverb where, when
 '''
 
-
+#This function parses a single sentence
 def parse(sentence):
     taglist = []
     wordlist = []
     question = ''
+    #Initialising empty values
     sentenceblob = TextBlob(sentence)
+    #Forming a Textblob
     sentenceblobtags = sentenceblob.tags
     for xyz in sentenceblobtags:
         a, b = xyz
         taglist.append(b)
         wordlist.append(a)
+        #You understand it, right?
     if taglist[0] == 'NNP' and wordlist[1] == 'is' or wordlist[1] == 'was':
         question = 'Who ' + wordlist[1]+' '+wordlist[0]+' '+'?             '
     if taglist[0] == 'NNP' and wordlist[1] == 'is' or wordlist[1] == 'was' and taglist[2] == 'JJ':
@@ -57,6 +60,14 @@ def parse(sentence):
         question += 'What ' + wordlist[1] +' '+wordlist[0]
     if taglist[0] == 'WRB':
         question = ''
+
+    #Did this-
+#1- Proper Noun + is/was
+
+#2- Proper Noun + is/was+ adjective
+
+#3-Common Noun +is/was
+#4 if sentence is already a question, return nothing
     return question
 
 
@@ -70,3 +81,6 @@ def loaddata(parag):
 
 parag = input("Enter a paragraph:\n")
 print(loaddata(parag))
+
+
+#If you want to contribute, add something after line 60
